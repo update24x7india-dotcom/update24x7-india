@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UPDATE24 Google Sheet Admin</title>
+<style>
+body{font-family:Arial,system-ui,sans-serif;background:#f5f7fb;margin:0;color:#111827}
+.login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:18px}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:20px;box-shadow:0 12px 40px rgba(10,36,99,.12)}
+.login .card{max-width:430px;width:100%}
+input,textarea,select{width:100%;padding:12px;border:1.5px solid #e5e7eb;border-radius:10px;margin:6px 0;font-size:14px;box-sizing:border-box}
+textarea{min-height:85px}
+button{border:none;background:#0A2463;color:#fff;border-radius:10px;padding:12px 16px;font-weight:900;cursor:pointer}
+.orange{background:#ff6b00}.green{background:#138808}.red{background:#dc2626}.gray{background:#374151}
+.app{display:none}.top{background:#0A2463;color:#fff;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.wrap{max-width:1150px;margin:auto;padding:18px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tab{background:#fff;color:#0A2463;border:1px solid #e5e7eb;border-radius:999px}.tab.active{background:#ff6b00;color:#fff}
+.section{display:none}.section.active{display:block}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+table{width:100%;border-collapse:collapse;background:#fff;margin-top:14px}th,td{border-bottom:1px solid #e5e7eb;padding:10px;text-align:left;font-size:13px}th{background:#eef2ff;color:#0A2463}
+.note{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:12px;padding:12px;margin-bottom:12px}
+@media(max-width:760px){.grid,.grid3{grid-template-columns:1fr}.top{display:block}.top button{margin-top:10px}}
+</style>
+</head>
+<body>
+<div class="login" id="login">
+  <div class="card">
+    <h1>UPDATE24 Admin</h1>
+    <p>Google Sheet Connected Admin Panel</p>
+    <input id="apiUrl" placeholder="Apps Script Web App URL">
+    <input id="pin" type="password" placeholder="Admin PIN">
+    <button class="orange" style="width:100%" onclick="loginAdmin()">Login</button>
+    <p style="font-size:12px;color:#666">PIN Google Apps Script code-এর ADMIN_PIN থেকে মিলবে। Default: 2424</p>
+  </div>
+</div>
+
+<div class="app" id="app">
+  <div class="top"><h2>UPDATE24 Admin Panel</h2><button class="red" onclick="logout()">Logout</button></div>
+  <div class="wrap">
+    <div class="note">✅ এখানে data add/update করলে Google Sheet-এ save হবে এবং public website-এ load হবে।</div>
+    <div class="tabs">
+      <button class="tab active" onclick="openTab('dash',this)">Dashboard</button>
+      <button class="tab" onclick="openTab('breaking',this)">Breaking</button>
+      <button class="tab" onclick="openTab('slider',this)">Slider</button>
+      <button class="tab" onclick="openTab('service',this)">Services</button>
+      <button class="tab" onclick="openTab('help',this)">Helpline</button>
+    </div>
+
+    <section id="dash" class="section active">
+      <div class="grid3">
+        <div class="card"><h3>Slider</h3><h1 id="cSlider">0</h1></div>
+        <div class="card"><h3>Services</h3><h1 id="cService">0</h1></div>
+        <div class="card"><h3>Helpline</h3><h1 id="cHelp">0</h1></div>
+      </div>
+    </section>
+
+    <section id="breaking" class="section">
+      <div class="card">
+        <h3>Breaking News Text</h3>
+        <textarea id="breakingText"></textarea>
+        <button class="green" onclick="saveBreaking()">Save Breaking</button>
+      </div>
+    </section>
+
+    <section id="slider" class="section">
+      <div class="card">
+        <h3>Add Slider / Latest Update</h3>
+        <div class="grid">
+          <input id="slTitle" placeholder="Title">
+          <input id="slTag" placeholder="Tag: NEW / UPDATE">
+          <input id="slDate" placeholder="Date">
+          <input id="slLink" placeholder="Official Link">
+        </div>
+        <textarea id="slDesc" placeholder="Description"></textarea>
+        <button class="green" onclick="addSlider()">Add Slider</button>
+      </div>
+      <table><thead><tr><th>Title</th><th>Tag</th><th>Action</th></tr></thead><tbody id="sliderTable"></tbody></table>
+    </section>
+
+    <section id="service" class="section">
+      <div class="card">
+        <h3>Add Service / Yojana</h3>
+        <div class="grid3">
+          <input id="svName" placeholder="Name">
+          <input id="svCat" placeholder="Category">
+          <input id="svState" placeholder="State/Central">
+        </div>
+        <div class="grid">
+          <input id="svIcon" placeholder="Icon emoji">
+          <input id="svLink" placeholder="Official Link">
+        </div>
+        <textarea id="svDesc" placeholder="Description"></textarea>
+        <button class="green" onclick="addService()">Add Service</button>
+      </div>
+      <table><thead><tr><th>Name</th><th>Category</th><th>Action</th></tr></thead><tbody id="serviceTable"></tbody></table>
+    </section>
+
+    <section id="help" class="section">
+      <div class="card">
+        <h3>Add Helpline</h3>
+        <div class="grid3">
+          <input id="hpName" placeholder="Name">
+          <input id="hpDept" placeholder="Department">
+          <input id="hpNumber" placeholder="Number">
+        </div>
+        <div class="grid">
+          <input id="hpIcon" placeholder="Icon emoji">
+          <input id="hpLink" placeholder="Official Help Link">
+        </div>
+        <textarea id="hpNote" placeholder="Note"></textarea>
+        <button class="green" onclick="addHelp()">Add Helpline</button>
+      </div>
+      <table><thead><tr><th>Name</th><th>Number</th><th>Action</th></tr></thead><tbody id="helpTable"></tbody></table>
+    </section>
+  </div>
+</div>
+
+<script>
+let API='', PIN='', DATA={slider:[],services:[],helplines:[],settings:{}};
+
+function api(action, payload={}){
+  return fetch(API, {
+    method:'POST',
+    body: JSON.stringify({action, pin:PIN, ...payload})
+  }).then(r=>r.json());
+}
+async function loginAdmin(){
+  API=document.getElementById('apiUrl').value.trim();
+  PIN=document.getElementById('pin').value.trim();
+  if(!API || !PIN) return alert('API URL and PIN required');
+  const res=await api('login');
+  if(res.ok){
+    localStorage.setItem('update24_api',API);
+    localStorage.setItem('update24_pin',PIN);
+    document.getElementById('login').style.display='none';
+    document.getElementById('app').style.display='block';
+    await loadData();
+  } else alert(res.error || 'Wrong PIN');
+}
+function logout(){localStorage.removeItem('update24_pin');location.reload()}
+function openTab(id,el){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active')}
+async function loadData(){
+  const res=await api('getData');
+  DATA=res;
+  render();
+}
+function render(){
+  document.getElementById('cSlider').textContent=(DATA.slider||[]).length;
+  document.getElementById('cService').textContent=(DATA.services||[]).length;
+  document.getElementById('cHelp').textContent=(DATA.helplines||[]).length;
+  document.getElementById('breakingText').value=DATA.settings?.breaking || '';
+  document.getElementById('sliderTable').innerHTML=(DATA.slider||[]).map(x=>`<tr><td>${x.title}</td><td>${x.tag}</td><td><button class="red" onclick="deleteRow('Slider','${x.id}')">Delete</button></td></tr>`).join('');
+  document.getElementById('serviceTable').innerHTML=(DATA.services||[]).map(x=>`<tr><td>${x.icon||''} ${x.name}</td><td>${x.category}</td><td><button class="red" onclick="deleteRow('Services','${x.id}')">Delete</button></td></tr>`).join('');
+  document.getElementById('helpTable').innerHTML=(DATA.helplines||[]).map(x=>`<tr><td>${x.icon||''} ${x.name}</td><td>${x.number}</td><td><button class="red" onclick="deleteRow('Helplines','${x.id}')">Delete</button></td></tr>`).join('');
+}
+async function saveBreaking(){await api('saveSettings',{settings:{breaking:document.getElementById('breakingText').value}});alert('Saved');loadData()}
+async function addSlider(){
+  await api('addSlider',{item:{title:v('slTitle'),tag:v('slTag'),date:v('slDate'),link:v('slLink'),desc:v('slDesc')}});
+  clear(['slTitle','slTag','slDate','slLink','slDesc']);loadData();
+}
+async function addService(){
+  await api('addService',{item:{name:v('svName'),category:v('svCat'),state:v('svState'),icon:v('svIcon'),link:v('svLink'),desc:v('svDesc')}});
+  clear(['svName','svCat','svState','svIcon','svLink','svDesc']);loadData();
+}
+async function addHelp(){
+  await api('addHelpline',{item:{name:v('hpName'),dept:v('hpDept'),number:v('hpNumber'),icon:v('hpIcon'),link:v('hpLink'),note:v('hpNote')}});
+  clear(['hpName','hpDept','hpNumber','hpIcon','hpLink','hpNote']);loadData();
+}
+async function deleteRow(sheet,id){if(confirm('Delete?')){await api('deleteRow',{sheet,id});loadData()}}
+function v(id){return document.getElementById(id).value.trim()}
+function clear(ids){ids.forEach(id=>document.getElementById(id).value='')}
+window.addEventListener('load',()=>{
+  document.getElementById('apiUrl').value=localStorage.getItem('update24_api')||'https://script.google.com/macros/s/AKfycbyWq-9NWNNfDl_VawK5wgJ4OhuSe0W2-7t49PJHwcligDZu9ainIGhFh8znEm5Gsctx/exec';
+  document.getElementById('pin').value=localStorage.getItem('update24_pin')||'';
+});
+</script>
+</body>
+</html>
