@@ -1,0 +1,32 @@
+UPDATE24 Google Sheet Admin Setup
+
+1) Google Sheet খুলুন
+2) Extensions > Apps Script
+3) apps-script-code.txt ফাইলের code paste করুন
+4) Save করুন
+5) Apps Script-এ setupSheets function select করে Run করুন
+6) Permission allow করুন
+7) Deploy > New deployment > Web app
+8) Execute as: Me
+9) Who has access: Anyone
+10) Deploy করুন
+11) Web App URL copy করুন
+
+Admin Login:
+- admin.html খুলুন
+- Apps Script Web App URL paste করুন
+- PIN দিন: 2424
+
+Public Website:
+- index.html খুলুন
+- এই লাইন খুঁজুন:
+  const API_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+- আপনার Apps Script Web App URL বসান
+
+Files:
+- index.html = Public website
+- admin.html = Google Sheet connected admin
+- apps-script-code.txt = Google Apps Script backend
+
+Important:
+Static website + Google Sheet backend হলে admin যেকোনো জায়গা থেকে update করতে পারবেন।
