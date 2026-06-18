@@ -1,13 +1,27 @@
 {
-  "name": "UPDATE24 - Government Services & Schemes Portal",
+  "name": "UPDATE24 - সরকারি যোজনা ও সেবা পোর্টাল",
   "short_name": "UPDATE24",
-  "description": "Government services, schemes, cards, certificates, registration, jobs and scholarship portal.",
+  "description": "কেন্দ্র ও রাজ্য সরকারের সমস্ত যোজনা, কার্ড সেবা, সার্টিফিকেট, রেজিস্ট্রেশন এক জায়গায়।",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#F9FAFB",
   "theme_color": "#0A2463",
   "orientation": "portrait-primary",
+  "lang": "bn",
+  "categories": ["government", "utilities", "education"],
+  "shortcuts": [
+    {
+      "name": "যোজনা খুঁজুন",
+      "url": "./index.html#all-yojana",
+      "description": "সরকারি যোজনা search করুন"
+    },
+    {
+      "name": "Aadhaar সেবা",
+      "url": "./index.html#all-yojana",
+      "description": "Aadhaar সংক্রান্ত সব সেবা"
+    }
+  ],
   "icons": [
     {
       "src": "icon-192.png",
