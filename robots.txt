@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://update24x7-india.vercel.app/sitemap.xml
