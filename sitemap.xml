@@ -15,4 +15,18 @@
   <url><loc>https://update24x7-india.vercel.app/eshram.html</loc><lastmod>2026-06-26</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://update24x7-india.vercel.app/gst-registration.html</loc><lastmod>2026-06-26</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://update24x7-india.vercel.app/udyam-registration.html</loc><lastmod>2026-06-26</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+
+  <url>
+    <loc>https://update24x7-india.vercel.app/find-office.html</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://update24x7-india.vercel.app/assembly.html</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
 </urlset>
