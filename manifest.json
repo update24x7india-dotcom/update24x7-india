@@ -1,15 +1,10 @@
 {
-  "name": "UPDATE24 West Bengal",
+  "name": "UPDATE24 - West Bengal Services",
   "short_name": "UPDATE24",
-  "start_url": "index.html",
+  "description": "Free public information and official links portal for West Bengal services.",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#f3f6fb",
-  "theme_color": "#0b3b8f",
-  "icons": [
-    {
-      "src": "icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+  "background_color": "#ffffff",
+  "theme_color": "#0d47a1",
+  "icons": [{"src":"/icon-512.png","sizes":"512x512","type":"image/png"}]
 }

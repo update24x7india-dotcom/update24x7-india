@@ -1,0 +1,3 @@
+Contact: https://update24x7-india.vercel.app/contact.html
+Preferred-Languages: bn, en, hi
+Canonical: https://update24x7-india.vercel.app/security.txt
