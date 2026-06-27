@@ -8,6 +8,6 @@ UPDATE24 Google Sheet Live Admin Ready
 6) প্রথমবার Admin খুলে data load হলে Save Live চাপুন।
 
 Apps Script URL already set:
-https://script.google.com/macros/s/AKfycbwMxSoq8Mhr_Evez8DVjjzcB9F5QfdyU-5yvqd8GK5TZCIHgBxXN1aBkt6L-DzFSMFh6w/exec
+https://script.google.com/macros/s/AKfycbwXvwUu9qzS2MUk36JjddYd9obrso8kDD8P1bogu6tvnPHRW-7b3cP0ZqsqHMT2oEkdbQ/exec
 
 Important: পুরনো code থাকলে Apps Script-এ পুরোটা delete করে নতুন code paste করবেন।
