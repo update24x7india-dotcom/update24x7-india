@@ -1,8 +1,4 @@
 {
-  "site_notice": {
-    "enabled": true,
-    "text": "🛠️ ওয়েবসাইটের কিছু পরিষেবায় বর্তমানে রক্ষণাবেক্ষণের (Maintenance) কাজ চলছে। কাজ শেষ হতে কিছুটা সময় লাগতে পারে, ধৈর্য রাখুন। অসুবিধার জন্য আমরা ক্ষমাপ্রার্থী।"
-  },
   "homepage_services": [
     {
       "key": "government apps official play store aadhaar ration voter digilocker ayushman pmkisan eshram passport mparivahan umang abha",
