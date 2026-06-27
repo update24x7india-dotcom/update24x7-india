@@ -5,7 +5,7 @@ function doGet(e) {
     const data = getSavedData_();
     return output_(data, e);
   } catch (err) {
-    return output_({ homepage_services: [], guide_pages: {}, success: false, error: String(err) }, e);
+    return output_({ homepage_services: [], guide_pages: {}, site_notice: { enabled: false, text: "" }, success: false, error: String(err) }, e);
   }
 }
 
@@ -16,7 +16,11 @@ function doPost(e) {
 
     const data = {
       homepage_services: Array.isArray(body.homepage_services) ? body.homepage_services : [],
-      guide_pages: body.guide_pages && typeof body.guide_pages === "object" ? body.guide_pages : {}
+      guide_pages: body.guide_pages && typeof body.guide_pages === "object" ? body.guide_pages : {},
+      site_notice: body.site_notice && typeof body.site_notice === "object" ? {
+        enabled: !!body.site_notice.enabled,
+        text: String(body.site_notice.text || "")
+      } : { enabled: false, text: "" }
     };
 
     const ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -39,12 +43,16 @@ function getSavedData_() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const sh = getOrCreateSheet_(ss);
   const value = sh.getRange(1, 1).getValue();
-  if (!value) return { homepage_services: [], guide_pages: {} };
+  if (!value) return { homepage_services: [], guide_pages: {}, site_notice: { enabled: false, text: "" } };
 
   const data = JSON.parse(value);
   return {
     homepage_services: Array.isArray(data.homepage_services) ? data.homepage_services : [],
-    guide_pages: data.guide_pages && typeof data.guide_pages === "object" ? data.guide_pages : {}
+    guide_pages: data.guide_pages && typeof data.guide_pages === "object" ? data.guide_pages : {},
+    site_notice: data.site_notice && typeof data.site_notice === "object" ? {
+      enabled: !!data.site_notice.enabled,
+      text: String(data.site_notice.text || "")
+    } : { enabled: false, text: "" }
   };
 }
 
@@ -52,7 +60,7 @@ function getOrCreateSheet_(ss) {
   let sh = ss.getSheetByName(SHEET_NAME);
   if (!sh) {
     sh = ss.insertSheet(SHEET_NAME);
-    sh.getRange(1, 1).setValue(JSON.stringify({ homepage_services: [], guide_pages: {} }));
+    sh.getRange(1, 1).setValue(JSON.stringify({ homepage_services: [], guide_pages: {}, site_notice: { enabled: false, text: "" } }));
     sh.getRange(1, 2).setValue(new Date());
   }
   return sh;

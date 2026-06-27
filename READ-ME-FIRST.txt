@@ -9,6 +9,8 @@ UPDATE24 LIVE ADMIN FIXED FINAL
 6) Admin PIN: 2026
 7) Admin খুলে প্রথমে Load Current Site Services চাপুন, তারপর Save Live চাপুন।
 8) 10 সেকেন্ড পরে Reload Sheet চাপুন। এরপর add/edit/delete করে Save Live দিলে live update হবে।
+9) NEW: Admin panel-এ "🛠️ Site Notice" নামে একটা নতুন ট্যাব আছে। এখান থেকে ওয়েবসাইটের উপরে maintenance/notice banner On/Off করা যাবে এবং banner-এর লেখা edit করা যাবে। Enable করে Save Live চাপলে সব পেজে banner দেখা যাবে; Disable করলে banner সম্পূর্ণ লুকিয়ে যাবে।
+   ⚠️ জরুরি: এই Site Notice feature কাজ করার জন্য Apps Script-এ অবশ্যই নতুন google-apps-script-LIVE-BACKEND-CODE.gs code paste করে নতুন version Deploy করতে হবে (উপরের Step 1-2)। পুরনো Apps Script deployment-এ এই feature কাজ করবে না।
 
 Apps Script URL already added:
 https://script.google.com/macros/s/AKfycbwXvwUu9qzS2MUk36JjddYd9obrso8kDD8P1bogu6tvnPHRW-7b3cP0ZqsqHMT2oEkdbQ/exec
