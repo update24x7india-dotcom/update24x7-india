@@ -20,7 +20,7 @@
     try{
       var m=data&&data.maintenance;
       if(!m||m.enabled===false){bar.style.display='none';}
-      else{if(typeof m.text==='string'&&m.text.trim()){bar.textContent=m.text;}bar.style.display='';}
+      else{if(typeof m.text==='string'&&m.text.trim()){bar.textContent=m.text;}bar.style.display='';setTimeout(function(){bar.style.display='none';},300000);}
     }catch(e){}
     cleanup();
   };

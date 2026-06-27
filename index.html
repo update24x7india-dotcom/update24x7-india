@@ -134,6 +134,7 @@ function applyMaintenance(m){
   if(!m||m.enabled===false){bar.style.display='none';return;}
   if(typeof m.text==='string'&&m.text.trim()){bar.textContent=m.text;}
   bar.style.display='';
+  setTimeout(function(){bar.style.display='none';},300000);
 }
 loadLinksData();
 if('serviceWorker' in navigator){navigator.serviceWorker.register('service-worker.js').catch(()=>{})}
