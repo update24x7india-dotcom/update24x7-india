@@ -69,7 +69,7 @@
     <p class="footer-copy">© 2026 UPDATE24. All Rights Reserved.</p>
   </div>
 </footer><a class="serviceFormFixed" href="request.html"><span>📝</span><div>Service Form<small>WhatsApp যাবে</small></div></a><div class="bottomBar"><a href="#home"><span>🏠</span>Home</a><a href="#services"><span>📂</span>Services</a><a href="find-office.html"><span>📍</span>Office</a><a href="assembly.html"><span>🗳️</span>AC No</a><a href="helpline.html"><span>☎️</span>Helpline</a><a class="help" href="https://wa.me/917549459770?text=%E0%A6%A8%E0%A6%AE%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%B0%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20UPDATE24%20%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%AC%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%9F%20%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87%20%E0%A6%8F%E0%A6%B8%E0%A7%87%E0%A6%9B%E0%A6%BF.%0A%0A%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0%20%E0%A6%A8%E0%A6%BE%E0%A6%AE%3A%0A%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE%3A%0A%E0%A6%B8%E0%A6%AE%E0%A6%B8%E0%A7%8D%E0%A6%AF%E0%A6%BE/%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AF%E0%A6%BC%E0%A7%8B%E0%A6%9C%E0%A6%A8%3A%0A%0A%E0%A6%A6%E0%A6%AF%E0%A6%BC%E0%A6%BE%20%E0%A6%95%E0%A6%B0%E0%A7%87%20%E0%A6%86%E0%A6%AE%E0%A6%BE%E0%A6%95%E0%A7%87%20%E0%A6%B8%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%AF%E0%A7%8D%E0%A6%AF%20%E0%A6%95%E0%A6%B0%E0%A7%81%E0%A6%A8%E0%A5%A4" target="_blank"><span>💬</span>Help</a></div><script>
-const services=[];let currentItems=[];function renderCards(list=services){cardGrid.innerHTML=list.map((s)=>`<div class="card" onclick="openModal(${services.indexOf(s)})"><div class="ico">${s.icon}</div><h3>${s.title}</h3><p>${s.desc}</p><span class="badge">Open services</span></div>`).join('')}function openModal(i){const s=services[i];currentItems=s.items;modalTitle.innerText=s.icon+' '+s.title;renderItems(currentItems);modal.classList.add('show');modalSearch.value=''}function renderItems(items){serviceList.innerHTML=items.map(x=>{let unavailable=x[3]=='#'||x[2]=='Updating';let cls=x[2]=='Call'?'call':(x[2]=='Updating'?'updating':'online');let btn=x[2]=='Call'?'Call Now':(unavailable?'Link Updating':'Open Direct Link');return `<div class="linkBox"><h4>${x[0]}</h4><p>${x[1]}</p><span class="status ${cls}">${x[2]}</span><br><a class="${unavailable?'disabled':''}" href="${unavailable?'javascript:void(0)':x[3]}" target="_blank" rel="noopener">${btn}</a></div>`}).join('')}function closeModal(){modal.classList.remove('show')}function filterItems(){let q=modalSearch.value.toLowerCase();renderItems(currentItems.filter(x=>x.join(' ').toLowerCase().includes(q)))}function searchCards(){let q=mainSearch.value.toLowerCase();renderCards(services.filter(s=>(s.key+s.title+s.desc+JSON.stringify(s.items)).toLowerCase().includes(q)))}
+const UPDATE24_SHEET_API="https://script.google.com/macros/s/AKfycbwMxSoq8Mhr_Evez8DVjjzcB9F5QfdyU-5yvqd8GK5TZCIHgBxXN1aBkt6L-DzFSMFh6w/exec";const services=[];let currentItems=[];function renderCards(list=services){cardGrid.innerHTML=list.map((s)=>`<div class="card" onclick="openModal(${services.indexOf(s)})"><div class="ico">${s.icon}</div><h3>${s.title}</h3><p>${s.desc}</p><span class="badge">Open services</span></div>`).join('')}function openModal(i){const s=services[i];currentItems=s.items;modalTitle.innerText=s.icon+' '+s.title;renderItems(currentItems);modal.classList.add('show');modalSearch.value=''}function renderItems(items){serviceList.innerHTML=items.map(x=>{let unavailable=x[3]=='#'||x[2]=='Updating';let cls=x[2]=='Call'?'call':(x[2]=='Updating'?'updating':'online');let btn=x[2]=='Call'?'Call Now':(unavailable?'Link Updating':'Open Direct Link');return `<div class="linkBox"><h4>${x[0]}</h4><p>${x[1]}</p><span class="status ${cls}">${x[2]}</span><br><a class="${unavailable?'disabled':''}" href="${unavailable?'javascript:void(0)':x[3]}" target="_blank" rel="noopener">${btn}</a></div>`}).join('')}function closeModal(){modal.classList.remove('show')}function filterItems(){let q=modalSearch.value.toLowerCase();renderItems(currentItems.filter(x=>x.join(' ').toLowerCase().includes(q)))}function searchCards(){let q=mainSearch.value.toLowerCase();renderCards(services.filter(s=>(s.key+s.title+s.desc+JSON.stringify(s.items)).toLowerCase().includes(q)))}
 const allLinks=[];services.forEach(s=>{s.items.forEach(it=>{allLinks.push({cat:s.title,icon:s.icon,title:it[0],desc:it[1],status:it[2],url:it[3]})})});
 function quickSuggestHTML(q){
   if(!q){return ''}
@@ -103,15 +103,22 @@ function openDBTService(){let i=services.findIndex(s=>s.title.toLowerCase().incl
 function openCertificateService(){let i=services.findIndex(s=>s.title.toLowerCase().includes("certificate")); if(i>=0) openModal(i)}
 window.onclick=e=>{if(e.target==modal)closeModal()};async function loadLinksData(){
   try{
-    const res=await fetch('links.json?v='+Date.now());
-    const data=await res.json();
+    let data=null;
+    try{
+      const res=await fetch(UPDATE24_SHEET_API+'?v='+Date.now());
+      data=await res.json();
+      if(!data || !data.homepage_services){throw new Error('Sheet empty')}
+    }catch(sheetErr){
+      const res2=await fetch('links.json?v='+Date.now());
+      data=await res2.json();
+    }
     services.length=0;
     (data.homepage_services||[]).forEach(s=>services.push(s));
     allLinks.length=0;
     services.forEach(s=>{s.items.forEach(it=>{allLinks.push({cat:s.title,icon:s.icon,title:it[0],desc:it[1],status:it[2],url:it[3]})})});
     renderCards();
   }catch(err){
-    console.error('Could not load links.json',err);
+    console.error('Could not load live data',err);
     renderCards();
   }
 }
