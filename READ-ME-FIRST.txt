@@ -1,0 +1,12 @@
+UPDATE24 FULL LIVE ADMIN FIX
+
+1) এই ZIP GitHub/Vercel-এ upload করুন।
+2) Apps Script খুলুন।
+3) google-apps-script-LIVE-BACKEND-CODE.gs ফাইলের code সম্পূর্ণ paste করুন।
+4) Deploy > Manage deployments > Edit pencil > Version: New version > Deploy.
+5) Web app access: Anyone.
+6) Admin URL: /admin-029379f2.html
+7) PIN: 2026
+8) Admin খুলে Load Current Site Services চাপুন, তারপর Save Live চাপুন।
+
+Load error মানে Apps Script পুরনো code চলছে বা New deployment হয়নি।

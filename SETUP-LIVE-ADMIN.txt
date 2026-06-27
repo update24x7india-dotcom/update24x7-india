@@ -1,0 +1,13 @@
+UPDATE24 Google Sheet Live Admin Ready
+
+1) google-apps-script-LIVE-BACKEND-CODE.gs এর code Apps Script-এ paste করুন।
+2) Deploy > Manage deployments > Edit/New version > Deploy করুন।
+3) এই ZIP GitHub/Vercel-এ upload করুন।
+4) Admin URL: https://update24x7-india.vercel.app/admin-029379f2.html
+5) PIN: 2026
+6) প্রথমবার Admin খুলে data load হলে Save Live চাপুন।
+
+Apps Script URL already set:
+https://script.google.com/macros/s/AKfycbwMxSoq8Mhr_Evez8DVjjzcB9F5QfdyU-5yvqd8GK5TZCIHgBxXN1aBkt6L-DzFSMFh6w/exec
+
+Important: পুরনো code থাকলে Apps Script-এ পুরোটা delete করে নতুন code paste করবেন।
