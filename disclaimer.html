@@ -11,4 +11,24 @@
 <meta property="og:image" content="https://update24x7-india.vercel.app/icon-512.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0d47a1">
-</head><body><div class="maintbar">🛠️ ওয়েবসাইটের কিছু পরিষেবায় বর্তমানে রক্ষণাবেক্ষণের (Maintenance) কাজ চলছে। কাজ শেষ হতে কিছুটা সময় লাগতে পারে, ধৈর্য রাখুন। অসুবিধার জন্য আমরা ক্ষমাপ্রার্থী।</div><div class="wrap"><p><a href="index.html">← Back to Home</a></p><div class="card"><h1>Disclaimer</h1><p>UPDATE24 কোনো সরকারি website নয়। এটি একটি স্বাধীন তথ্যভিত্তিক portal। এখানে দেওয়া links official government portal-এর জন্য। কোনো আবেদন, payment বা verification সংশ্লিষ্ট official website-এ সম্পন্ন হয়।</p><p>Official website-এ ব্যক্তিগত তথ্য দেওয়ার আগে URL ভালো করে যাচাই করুন।</p></div></div></body></html>
+</head><body><div class="maintbar" id="maintbar">🛠️ ওয়েবসাইটের কিছু পরিষেবায় বর্তমানে রক্ষণাবেক্ষণের (Maintenance) কাজ চলছে। কাজ শেষ হতে কিছুটা সময় লাগতে পারে, ধৈর্য রাখুন। অসুবিধার জন্য আমরা ক্ষমাপ্রার্থী।</div><div class="wrap"><p><a href="index.html">← Back to Home</a></p><div class="card"><h1>Disclaimer</h1><p>UPDATE24 কোনো সরকারি website নয়। এটি একটি স্বাধীন তথ্যভিত্তিক portal। এখানে দেওয়া links official government portal-এর জন্য। কোনো আবেদন, payment বা verification সংশ্লিষ্ট official website-এ সম্পন্ন হয়।</p><p>Official website-এ ব্যক্তিগত তথ্য দেওয়ার আগে URL ভালো করে যাচাই করুন।</p></div></div><script>
+(function(){
+  var bar=document.getElementById('maintbar');
+  if(!bar)return;
+  var cb='u24_maint_cb_'+Date.now()+'_'+Math.random().toString(36).slice(2);
+  window[cb]=function(data){
+    try{
+      var m=data&&data.maintenance;
+      if(!m||m.enabled===false){bar.style.display='none';}
+      else{if(typeof m.text==='string'&&m.text.trim()){bar.textContent=m.text;}bar.style.display='';}
+    }catch(e){}
+    cleanup();
+  };
+  var s=document.createElement('script');
+  function cleanup(){try{delete window[cb];}catch(e){window[cb]=undefined;}if(s.parentNode)s.parentNode.removeChild(s);}
+  s.onerror=cleanup;
+  s.src='https://script.google.com/macros/s/AKfycbxNE5u4Elcfd0S53tXoF7T20fPR14wcm3A5c7Ggd4lonKE7XB4H4z-kzzPwYyUYg7c3-g/exec?callback='+encodeURIComponent(cb)+'&v='+Date.now();
+  document.head.appendChild(s);
+})();
+</script>
+</body></html>
