@@ -5,7 +5,7 @@ function doGet(e) {
     const data = getSavedData_();
     return output_(data, e);
   } catch (err) {
-    return output_({ homepage_services: [], guide_pages: {}, success: false, error: String(err) }, e);
+    return output_({ homepage_services: [], guide_pages: {}, maintenance: { enabled: false, text: "" }, success: false, error: String(err) }, e);
   }
 }
 
@@ -16,7 +16,8 @@ function doPost(e) {
 
     const data = {
       homepage_services: Array.isArray(body.homepage_services) ? body.homepage_services : [],
-      guide_pages: body.guide_pages && typeof body.guide_pages === "object" ? body.guide_pages : {}
+      guide_pages: body.guide_pages && typeof body.guide_pages === "object" ? body.guide_pages : {},
+      maintenance: body.maintenance && typeof body.maintenance === "object" ? body.maintenance : { enabled: false, text: "" }
     };
 
     const ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -39,12 +40,13 @@ function getSavedData_() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const sh = getOrCreateSheet_(ss);
   const value = sh.getRange(1, 1).getValue();
-  if (!value) return { homepage_services: [], guide_pages: {} };
+  if (!value) return { homepage_services: [], guide_pages: {}, maintenance: { enabled: false, text: "" } };
 
   const data = JSON.parse(value);
   return {
     homepage_services: Array.isArray(data.homepage_services) ? data.homepage_services : [],
-    guide_pages: data.guide_pages && typeof data.guide_pages === "object" ? data.guide_pages : {}
+    guide_pages: data.guide_pages && typeof data.guide_pages === "object" ? data.guide_pages : {},
+    maintenance: data.maintenance && typeof data.maintenance === "object" ? data.maintenance : { enabled: false, text: "" }
   };
 }
 
@@ -52,7 +54,7 @@ function getOrCreateSheet_(ss) {
   let sh = ss.getSheetByName(SHEET_NAME);
   if (!sh) {
     sh = ss.insertSheet(SHEET_NAME);
-    sh.getRange(1, 1).setValue(JSON.stringify({ homepage_services: [], guide_pages: {} }));
+    sh.getRange(1, 1).setValue(JSON.stringify({ homepage_services: [], guide_pages: {}, maintenance: { enabled: false, text: "" } }));
     sh.getRange(1, 2).setValue(new Date());
   }
   return sh;

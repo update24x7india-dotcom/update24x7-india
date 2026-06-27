@@ -34,7 +34,7 @@ function showDistrict(){const d=document.getElementById('districtSelect').value;
     try{
       var m=data&&data.maintenance;
       if(!m||m.enabled===false){bar.style.display='none';}
-      else{if(typeof m.text==='string'&&m.text.trim()){bar.textContent=m.text;}bar.style.display='';setTimeout(function(){bar.style.display='none';},300000);}
+      else{if(typeof m.text==='string'&&m.text.trim()){bar.textContent=m.text;}bar.style.display='';setTimeout(function(){bar.style.display='none';},120000);}
     }catch(e){}
     cleanup();
   };
