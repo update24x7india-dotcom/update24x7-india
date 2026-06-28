@@ -973,22 +973,22 @@
       "desc": "SC, ST, OBC caste certificate apply, status, download ও verify করুন।",
       "items": [
         [
-          "e-District Home",
-          "Caste certificate-সহ সব certificate service-এর official portal।",
+          " Caste-Certificate Application Request",
+          "SC/ST",
           "Online",
-          "https://edistrict.wb.gov.in/"
+          "https://castcertificatewb.gov.in/application"
         ],
         [
-          "Citizen Login / Apply",
-          "Caste certificate apply করতে login করুন।",
+          "Edit Application",
+          "Edit Application",
           "Online",
-          "https://edistrict.wb.gov.in/PACE/Login.do"
+          "https://castcertificatewb.gov.in/editsearch_appl"
         ],
         [
-          "New Citizen Registration",
-          "প্রথমবার apply করতে নতুন registration করুন।",
+          "View Status of an application:",
+          "Status of an application:",
           "Online",
-          "https://edistrict.wb.gov.in/PACE/Registration.do"
+          "https://castcertificatewb.gov.in/searchappl"
         ],
         [
           "Track Application Status",
@@ -997,28 +997,22 @@
           "https://edistrict.wb.gov.in/PACE/status.do"
         ],
         [
-          "Verify Certificate",
-          "Issued caste certificate verify করুন।",
+          "View Certificate Details",
+          "View Certificate Details:",
           "Online",
-          "https://edistrict.wb.gov.in/PACE/viewCertificate.do"
+          "https://castcertificatewb.gov.in/searchapplication/viewcertificatedetails"
         ],
         [
           "Download Certificate",
           "Approved caste certificate download করুন।",
           "Online",
-          "https://edistrict.wb.gov.in/PACE/downloadCertificate.do"
+          "https://castcertificatewb.gov.in/downlaodsigncertificate"
         ],
         [
-          "Bangla Sahayata Kendra",
-          "BSK center থেকে free-তে apply করা যায়।",
+          "Reprint Application and Acknowledgement Slip",
+          "Reprint Application and Acknowledgement Slip",
           "Online",
-          "https://bsk.wb.gov.in/"
-        ],
-        [
-          "WB Caste Certificate Portal",
-          "West Bengal সরকারের official caste certificate portal।",
-          "Online",
-          "https://castcertificatewb.gov.in/"
+          "https://castcertificatewb.gov.in/searchaack_appl"
         ]
       ]
     },
