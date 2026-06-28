@@ -47,8 +47,21 @@ button{padding:9px 10px}
 .fileBtn{padding:8px 9px;font-size:12px}
 }
 @media(max-width:480px){
-.topbar button{min-width:100%}
-.split{grid-template-columns:120px 1fr}
+.topbar button{min-width:100%;padding:13px 8px;font-size:13px}
+.split{grid-template-columns:1fr}
+.catList{max-height:200px;overflow-y:auto}
+.row{grid-template-columns:1fr;gap:8px;padding:10px}
+.row input,.row select{font-size:15px;padding:11px 10px}
+.row button{width:100%;padding:12px;font-size:14px}
+.grid{grid-template-columns:1fr}
+.grid button{width:100%;padding:12px;font-size:14px}
+.catMeta{grid-template-columns:1fr}
+.tab{padding:11px 6px;font-size:13px}
+input,select,textarea{font-size:15px;padding:11px 10px}
+button{font-size:13px;padding:11px 10px}
+.catHead div{gap:8px}
+.catHead button{padding:11px 8px;font-size:13px}
+header h2{font-size:14px}
 }
 </style></head><body><header><h2>🔐 UPDATE24 Full Live Admin Panel</h2><div style="color:#dbeafe">Service / Link / Category / Guide Button — Add, Edit, Delete + Google Sheet Live Sync</div></header><div class="wrap">
 <div id="login" class="card"><h3>Admin Login</h3><input id="pin" type="password" placeholder="PIN দিন"><br><br><button class="blue" onclick="login()">Login</button><div class="small">PIN: 2026</div></div>
