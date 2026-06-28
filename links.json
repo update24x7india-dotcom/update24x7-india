@@ -101,22 +101,22 @@
           "https://wbpds.wb.gov.in/(S(ulkmauqsufexmdtqgziidyqd))/EKYC_otp.aspx"
         ],
         [
-          "Ration Card Details Search",
+          "VERIFY RATION CARD",
           "Ration card details/search করুন।",
           "Online",
-          "https://wbpds.wb.gov.in/rcmsnew/Citizen/SearchDigitalRationCardDetails"
+          "https://wbpds.wb.gov.in/(S(1qw0qdkoxs2xy4ym5w23qx51))/CheckRationCardStatus.aspx"
         ],
         [
           "Apply / Modify Ration Card",
           "নতুন আবেদন, member add/delete, correction।",
           "Online",
-          "https://wbpds.wb.gov.in/rcmsnew/Citizen/PublicForm"
+          "https://wbpds.wb.gov.in/rcmsnew/AadhaarAuthenticationLogin/Index"
         ],
         [
-          "WB Food Official Portal",
-          "Food & Supplies main official portal।",
+          "মোবাইল নম্বর আপডেট করুন",
+          "মোবাইল নম্বর আপডেট করুন",
           "Online",
-          "https://food.wb.gov.in/"
+          "https://wbpds.wb.gov.in/(S(j4mr4vmqz1r5lmv3y1giwuk0))/Mobile_Update_by_Aadhaar.aspx"
         ]
       ]
     },
@@ -1242,6 +1242,6 @@
   },
   "maintenance": {
     "enabled": true,
-    "text": "🔄 UPDATE24 ওয়েবসাইট আপডেটের কাজ ৮০% সম্পন্ন হয়েছে। নতুন পরিষেবা ও লিঙ্ক শীঘ্রই যুক্ত হবে। ধৈর্য রাখুন।"
+    "text": "\"🔧 UPDATE24 ওয়েবসাইটে কিছু কারিগরি সমস্যা দেখা দিয়েছিল। এখন সব ঠিক হয়ে গেছে — আপনি স্বাভাবিকভাবে সমস্ত পরিষেবা ব্যবহার করতে পারবেন। ধন্যবাদ।\""
   }
 }
