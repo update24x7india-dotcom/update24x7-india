@@ -46,7 +46,8 @@ button{font-family:inherit}
 .app{display:flex;min-height:100vh}
 .sidebar{width:248px;flex:0 0 248px;background:linear-gradient(180deg,#1d4ed8,#1e3a8a);color:#fff;position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:40;transition:transform .25s}
 .sidebar .brand{display:flex;align-items:center;gap:10px;padding:20px 18px;border-bottom:1px solid rgba(255,255,255,.15)}
-.sidebar .brand .logoBox{width:42px;height:42px;border-radius:12px;background:#fff;color:#1d4ed8;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;flex:0 0 auto}
+.sidebar .brand .logoBox{width:42px;height:42px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;flex:0 0 auto;overflow:hidden;padding:2px}
+.sidebar .brand .logoBox img{width:100%;height:100%;object-fit:cover;border-radius:10px}
 .sidebar .brand .btxt b{display:block;font-size:18px;font-weight:900}
 .sidebar .brand .btxt span{display:block;font-size:11px;opacity:.8}
 .sideMenu{padding:14px 10px;display:flex;flex-direction:column;gap:3px}
@@ -257,7 +258,7 @@ body.dark .bottomBar{background:#1e293b;border-color:#27344a}
 
   <aside class="sidebar" id="sidebar">
     <div class="brand">
-      <div class="logoBox">U24</div>
+      <div class="logoBox"><img src="icon-512.png" alt="UPDATE24 Logo"></div>
       <div class="btxt"><b>UPDATE<span style="color:#fde047">24</span></b><span>West Bengal Service Portal</span></div>
     </div>
     <nav class="sideMenu">
