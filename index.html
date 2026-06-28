@@ -71,8 +71,49 @@ body.dark .darkBtn{background:#ffd700;color:#000}
 body.dark .skel{background:#1e293b}
 @media(max-width:900px){.skelGrid{grid-template-columns:repeat(2,1fr)}}
 </style>
+
+<style id="disclaimer-css">
+.discOverlay{display:none;position:fixed;inset:0;background:#0009;z-index:200;align-items:center;justify-content:center;padding:16px}
+.discOverlay.show{display:flex}
+.discBox{background:#fff;border-radius:20px;padding:28px;max-width:520px;width:100%;text-align:center}
+body.dark .discBox{background:#1e293b;color:#e2e8f0}
+.discBox h2{color:#0b3b8f;font-size:22px;margin-bottom:12px}
+body.dark .discBox h2{color:#60a5fa}
+.discBox p{font-size:14px;line-height:1.7;color:#374151;margin-bottom:16px}
+body.dark .discBox p{color:#94a3b8}
+.discBox .warn{background:#fff3cd;color:#6b5000;border-radius:12px;padding:12px;font-weight:800;font-size:13px;margin-bottom:16px}
+.discBtn{background:#0b3b8f;color:#fff;border:0;border-radius:12px;padding:12px 28px;font-weight:900;font-size:15px;cursor:pointer;width:100%}
+</style>
+<div class="discOverlay" id="disclaimer">
+<div class="discBox">
+<h2>⚠️ গুরুত্বপূর্ণ নোটিশ</h2>
+<p>UPDATE24 একটি <strong>বেসরকারি তথ্য পোর্টাল</strong>। এটি কোনো সরকারি ওয়েবসাইট নয়।</p>
+<div class="warn">🔒 OTP, Aadhaar নম্বর, ব্যাংক তথ্য কাউকে দেবেন না।<br>সকল আবেদন শুধুমাত্র official সরকারি পোর্টালে করুন।</div>
+<p>এই সাইটে সম্পূর্ণ বিনামূল্যে সরকারি পরিষেবার official link দেওয়া হয়।</p>
+<button class="discBtn" onclick="closeDisclaimer()">✅ বুঝলাম, এগিয়ে যান</button>
+</div>
+</div>
+<style id="feedback-css">
+.feedbackBar{position:fixed;bottom:70px;left:0;right:0;z-index:45;display:flex;justify-content:center;pointer-events:none}
+.feedbackBox{background:#fff;border-radius:99px;box-shadow:0 4px 20px #0003;padding:10px 20px;display:flex;align-items:center;gap:10px;pointer-events:all;transform:translateY(100px);transition:.4s;font-size:14px;font-weight:800}
+.feedbackBox.show{transform:translateY(0)}
+body.dark .feedbackBox{background:#1e293b;color:#e2e8f0}
+.fbBtn{border:0;background:none;font-size:22px;cursor:pointer;padding:4px}
+.feedbackThanks{display:none;color:#16a34a;font-weight:900}
+@media(min-width:901px){.feedbackBar{bottom:20px}}
+</style>
+
+<style id="print-css">
+@media print{
+.nav,.bottomBar,.darkBtn,.feedbackBar,.discOverlay,.maintbar,.top,footer,.search,.modal,button{display:none!important}
+.grid{grid-template-columns:repeat(3,1fr)!important}
+.card{break-inside:avoid;box-shadow:none!important;border:1px solid #ccc!important}
+body{background:#fff!important;color:#000!important}
+.hero{background:#0b3b8f!important;-webkit-print-color-adjust:exact}
+}
+</style>
 </head><body><button class="darkBtn" id="darkBtn" onclick="toggleDark()" title="Dark/Light mode">🌙</button>
-<div class="maintbar" id="maintbar">🔄 UPDATE24 ওয়েবসাইট আপডেটের কাজ ৮০% সম্পন্ন হয়েছে। নতুন পরিষেবা ও লিঙ্ক শীঘ্রই যুক্ত হবে। ধৈর্য রাখুন।</div><div class="top"><span>✅ UPDATE24: শুধু West Bengal প্রয়োজনীয় পরিষেবা — Ration • eDistrict • Annapurna Bhandar • Pension • Banglarbhumi • Scholarship • Farmer • Health • Ayushman Bharat • Transport • Job • DBT Bank Link • PAN • e-Shram • GST Registration • Udyam/MSME • PM-KISAN • Passport • DigiLocker</span></div><nav class="nav"><div class="navin"><div class="logo">UPDATE<b>24</b></div><button class="hamb" onclick="document.querySelector('.menu').classList.toggle('open')">☰</button><div class="menu"><a href="#home">Home</a><a href="#services">Services</a><a href="helpline.html">Helpline</a><a href="apps.html">Apps</a><a href="find-office.html">Find Office</a><a href="request.html">Service Form</a><a href="apps.html">Govt Apps</a><a href="https://wa.me/917549459770?text=%E0%A6%A8%E0%A6%AE%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%B0%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20UPDATE24%20%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%AC%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%9F%20%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87%20%E0%A6%8F%E0%A6%B8%E0%A7%87%E0%A6%9B%E0%A6%BF.%0A%0A%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0%20%E0%A6%A8%E0%A6%BE%E0%A6%AE%3A%0A%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE%3A%0A%E0%A6%B8%E0%A6%AE%E0%A6%B8%E0%A7%8D%E0%A6%AF%E0%A6%BE/%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AF%E0%A6%BC%E0%A7%8B%E0%A6%9C%E0%A6%A8%3A%0A%0A%E0%A6%A6%E0%A6%AF%E0%A6%BC%E0%A6%BE%20%E0%A6%95%E0%A6%B0%E0%A7%87%20%E0%A6%86%E0%A6%AE%E0%A6%BE%E0%A6%95%E0%A7%87%20%E0%A6%B8%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%AF%E0%A7%8D%E0%A6%AF%20%E0%A6%95%E0%A6%B0%E0%A7%81%E0%A6%A8%E0%A5%A4" target="_blank">Help</a><a href="javascript:void(0)" onclick="hardRefresh()" style="color:#ff6b00;font-weight:900">🔄 Refresh</a></div></div></nav><section class="hero" id="home"><div class="heroin"><div><span class="tag">West Bengal Only Service Portal</span><h1>বাংলার সরকারি পরিষেবা ও direct official links এক জায়গায়</h1><p>যে service online হয়, সেই কাজের সরাসরি official link এখানে দেওয়া আছে। PC-তে PC layout, mobile-এ mobile layout খুলবে।</p><div class="search" style="position:relative"><input id="mainSearch" placeholder="Search: aadhaar, ration, voter, pan, dbt, eshram, gst, udyam" oninput="searchCards();updateQuickSuggest()" autocomplete="off"><button onclick="searchCards()">Search</button><div id="quickSuggest" class="quickSuggest"></div></div><div class="notice">📢 UPDATE24-এ নতুন West Bengal পরিষেবা নিয়মিত যুক্ত করা হচ্ছে। কিছু পরিষেবার update/কাজ চলছে।</div><div class="notice safe" id="safe">✅ আবেদন করার আগে official website-এর নাম মিলিয়ে নিন এবং OTP/ব্যাংক তথ্য কাউকে শেয়ার করবেন না।</div></div><div class="heroCard"><h3>Quick Help</h3><div class="quick"><div>📍 Find DM/SDO/BDO Office</div><div>🍚 Ration status/download/e-KYC</div><div>📄 Caste/Income/Domicile certificate</div><div>🌾 Land khatian/mutation info</div><div>👵 Pension & social schemes</div><div>🏦 DBT Aadhaar-Bank Link</div><div>🩺 Ayushman Bharat Card / ABHA</div><div>👷 e-Shram Card Registration</div><div>🧾 GST Registration</div><div>🏭 Udyam / MSME Registration</div></div></div></div><div class="bannerWrap"><div class="slider"><div class="slides" id="bannerSlides">
+<div class="maintbar" id="maintbar">🔄 UPDATE24 ওয়েবসাইট আপডেটের কাজ ৮০% সম্পন্ন হয়েছে। নতুন পরিষেবা ও লিঙ্ক শীঘ্রই যুক্ত হবে। ধৈর্য রাখুন।</div><div class="top"><span>✅ UPDATE24: শুধু West Bengal প্রয়োজনীয় পরিষেবা — Ration • eDistrict • Annapurna Bhandar • Pension • Banglarbhumi • Scholarship • Farmer • Health • Ayushman Bharat • Transport • Job • DBT Bank Link • PAN • e-Shram • GST Registration • Udyam/MSME • PM-KISAN • Passport • DigiLocker</span></div><nav class="nav"><div class="navin"><div class="logo">UPDATE<b>24</b></div><button class="hamb" onclick="document.querySelector('.menu').classList.toggle('open')">☰</button><div class="menu"><a href="#home">Home</a><a href="#services">Services</a><a href="helpline.html">Helpline</a><a href="apps.html">Apps</a><a href="find-office.html">Find Office</a><a href="request.html">Service Form</a><a href="apps.html">Govt Apps</a><a href="https://wa.me/917549459770?text=%E0%A6%A8%E0%A6%AE%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%B0%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20UPDATE24%20%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%AC%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%9F%20%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87%20%E0%A6%8F%E0%A6%B8%E0%A7%87%E0%A6%9B%E0%A6%BF.%0A%0A%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0%20%E0%A6%A8%E0%A6%BE%E0%A6%AE%3A%0A%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE%3A%0A%E0%A6%B8%E0%A6%AE%E0%A6%B8%E0%A7%8D%E0%A6%AF%E0%A6%BE/%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AF%E0%A6%BC%E0%A7%8B%E0%A6%9C%E0%A6%A8%3A%0A%0A%E0%A6%A6%E0%A6%AF%E0%A6%BC%E0%A6%BE%20%E0%A6%95%E0%A6%B0%E0%A7%87%20%E0%A6%86%E0%A6%AE%E0%A6%BE%E0%A6%95%E0%A7%87%20%E0%A6%B8%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%AF%E0%A7%8D%E0%A6%AF%20%E0%A6%95%E0%A6%B0%E0%A7%81%E0%A6%A8%E0%A5%A4" target="_blank">Help</a><a href="javascript:void(0)" onclick="printPage()" style="color:#0b3b8f;font-weight:900">🖨️ Print</a><a href="javascript:void(0)" onclick="hardRefresh()" style="color:#ff6b00;font-weight:900">🔄 Refresh</a></div></div></nav><section class="hero" id="home"><div class="heroin"><div><span class="tag">West Bengal Only Service Portal</span><h1>বাংলার সরকারি পরিষেবা ও direct official links এক জায়গায়</h1><p>যে service online হয়, সেই কাজের সরাসরি official link এখানে দেওয়া আছে। PC-তে PC layout, mobile-এ mobile layout খুলবে।</p><div class="search" style="position:relative"><input id="mainSearch" placeholder="Search: aadhaar, ration, voter, pan, dbt, eshram, gst, udyam" oninput="searchCards();updateQuickSuggest()" autocomplete="off"><button onclick="searchCards()">Search</button><div id="quickSuggest" class="quickSuggest"></div></div><div class="notice">📢 UPDATE24-এ নতুন West Bengal পরিষেবা নিয়মিত যুক্ত করা হচ্ছে। কিছু পরিষেবার update/কাজ চলছে।</div><div class="notice safe" id="safe">✅ আবেদন করার আগে official website-এর নাম মিলিয়ে নিন এবং OTP/ব্যাংক তথ্য কাউকে শেয়ার করবেন না।</div></div><div class="heroCard"><h3>Quick Help</h3><div class="quick"><div>📍 Find DM/SDO/BDO Office</div><div>🍚 Ration status/download/e-KYC</div><div>📄 Caste/Income/Domicile certificate</div><div>🌾 Land khatian/mutation info</div><div>👵 Pension & social schemes</div><div>🏦 DBT Aadhaar-Bank Link</div><div>🩺 Ayushman Bharat Card / ABHA</div><div>👷 e-Shram Card Registration</div><div>🧾 GST Registration</div><div>🏭 Udyam / MSME Registration</div></div></div></div><div class="bannerWrap"><div class="slider"><div class="slides" id="bannerSlides">
 <div class="banner imgBanner" style="background:linear-gradient(120deg,#b91c1c 0%,#f97316 100%);position:relative;overflow:hidden;min-height:220px;align-items:center">
   <div style="position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-size:120px;opacity:0.15;line-height:1">🍚</div>
   <div style="position:absolute;right:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.12);border-radius:20px;padding:16px;text-align:center;min-width:110px">
@@ -136,7 +177,15 @@ body.dark .skel{background:#1e293b}
 <button onclick="shareService()" style="background:#25D366;color:#fff;border:0;border-radius:10px;padding:7px 14px;font-weight:900;cursor:pointer;font-size:13px">📤 WhatsApp Share</button>
 <button onclick="copyLink()" style="background:#0b3b8f;color:#fff;border:0;border-radius:10px;padding:7px 14px;font-weight:900;cursor:pointer;font-size:13px">🔗 Link Copy</button>
 <button onclick="toggleBookmark()" id="bookmarkBtn" style="background:#ff6b00;color:#fff;border:0;border-radius:10px;padding:7px 14px;font-weight:900;cursor:pointer;font-size:13px">🔖 Bookmark</button>
-</div><input class="modalSearch" id="modalSearch" placeholder="Search inside this service" oninput="filterItems()"><div id="serviceList"></div></div></div><div class="wrap" id="recentWrap" style="display:none;margin-top:20px">
+</div><input class="modalSearch" id="modalSearch" placeholder="Search inside this service" oninput="filterItems()"><div id="serviceList"></div></div></div><div class="feedbackBar" id="feedbackBar">
+<div class="feedbackBox" id="feedbackBox">
+<span>এই তথ্য কি কাজে লাগলো?</span>
+<button class="fbBtn" onclick="sendFeedback(1)" title="হ্যাঁ">👍</button>
+<button class="fbBtn" onclick="sendFeedback(0)" title="না">👎</button>
+<span class="feedbackThanks" id="feedbackThanks">ধন্যবাদ! 🙏</span>
+</div>
+</div>
+<div class="wrap" id="recentWrap" style="display:none;margin-top:20px">
 <h2 class="secTitle">🕐 সম্প্রতি দেখেছেন</h2>
 <div id="recentGrid" class="grid"></div>
 </div>
@@ -156,7 +205,7 @@ body.dark .skel{background:#1e293b}
     </div>
     <p class="footer-copy">© 2026 UPDATE24. All Rights Reserved. | <span id="visitorCount">👥 লোড হচ্ছে...</span></p>
   </div>
-</footer><div class="bottomBar"><a href="#home"><span>🏠</span>Home</a><a href="#services"><span>📂</span>Services</a><a href="find-office.html"><span>📍</span>Office</a><a href="helpline.html"><span>☎️</span>Helpline</a><a class="help" href="https://wa.me/917549459770?text=%E0%A6%A8%E0%A6%AE%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%B0%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20UPDATE24%20%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%AC%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%9F%20%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87%20%E0%A6%8F%E0%A6%B8%E0%A7%87%E0%A6%9B%E0%A6%BF.%0A%0A%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0%20%E0%A6%A8%E0%A6%BE%E0%A6%AE%3A%0A%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE%3A%0A%E0%A6%B8%E0%A6%AE%E0%A6%B8%E0%A7%8D%E0%A6%AF%E0%A6%BE/%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AF%E0%A6%BC%E0%A7%8B%E0%A6%9C%E0%A6%A8%3A%0A%0A%E0%A6%A6%E0%A6%AF%E0%A6%BC%E0%A6%BE%20%E0%A6%95%E0%A6%B0%E0%A7%87%20%E0%A6%86%E0%A6%AE%E0%A6%BE%E0%A6%95%E0%A7%87%20%E0%A6%B8%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%AF%E0%A7%8D%E0%A6%AF%20%E0%A6%95%E0%A6%B0%E0%A7%81%E0%A6%A8%E0%A5%A4" target="_blank"><span>💬</span>Help</a><a href="javascript:void(0)" onclick="hardRefresh()" style="color:#ff6b00;font-weight:900"><span>🔄</span>Refresh</a></div><script>
+</footer><div class="bottomBar"><a href="#home"><span>🏠</span>Home</a><a href="#services"><span>📂</span>Services</a><a href="find-office.html"><span>📍</span>Office</a><a href="helpline.html"><span>☎️</span>Helpline</a><a class="help" href="https://wa.me/917549459770?text=%E0%A6%A8%E0%A6%AE%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%B0%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20UPDATE24%20%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%AC%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%9F%20%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87%20%E0%A6%8F%E0%A6%B8%E0%A7%87%E0%A6%9B%E0%A6%BF.%0A%0A%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0%20%E0%A6%A8%E0%A6%BE%E0%A6%AE%3A%0A%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE%3A%0A%E0%A6%B8%E0%A6%AE%E0%A6%B8%E0%A7%8D%E0%A6%AF%E0%A6%BE/%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AF%E0%A6%BC%E0%A7%8B%E0%A6%9C%E0%A6%A8%3A%0A%0A%E0%A6%A6%E0%A6%AF%E0%A6%BC%E0%A6%BE%20%E0%A6%95%E0%A6%B0%E0%A7%87%20%E0%A6%86%E0%A6%AE%E0%A6%BE%E0%A6%95%E0%A7%87%20%E0%A6%B8%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%AF%E0%A7%8D%E0%A6%AF%20%E0%A6%95%E0%A6%B0%E0%A7%81%E0%A6%A8%E0%A5%A4" target="_blank"><span>💬</span>Help</a><a href="javascript:void(0)" onclick="printPage()" style="color:#0b3b8f;font-weight:900">🖨️ Print</a><a href="javascript:void(0)" onclick="hardRefresh()" style="color:#ff6b00;font-weight:900"><span>🔄</span>Refresh</a></div><script>
 const services=[];let currentItems=[];function renderCards(list=services){cardGrid.innerHTML=list.map((s)=>`<div class="card" onclick="openModal(${services.indexOf(s)})"><div class="ico">${s.image?`<img src="${s.image}" alt="${s.title}" loading="lazy">`:s.icon}</div><h3>${s.title}</h3><p>${s.desc}</p><span class="badge">Open services</span></div>`).join('')}function openModal(i){
   currentModalIdx=i;
   const svc=services[i];
@@ -330,4 +379,59 @@ function updateVisitor(){
   if(el)el.textContent=`👥 আজ: ${data.today} বার | মোট: ${data.total} বার`;
 }
 updateVisitor();
+
+// Disclaimer popup
+function closeDisclaimer(){
+  document.getElementById('disclaimer').classList.remove('show');
+  localStorage.setItem('u24disc','1');
+}
+if(!localStorage.getItem('u24disc')){
+  setTimeout(()=>{
+    const d=document.getElementById('disclaimer');
+    if(d)d.classList.add('show');
+  },500);
+}
+
+// Feedback
+let feedbackShown=false;
+function showFeedback(){
+  if(feedbackShown)return;
+  feedbackShown=true;
+  setTimeout(()=>{
+    const b=document.getElementById('feedbackBox');
+    if(b)b.classList.add('show');
+  },5000);
+}
+function sendFeedback(val){
+  const t=document.getElementById('feedbackThanks');
+  const btns=document.querySelectorAll('.fbBtn');
+  btns.forEach(b=>b.style.display='none');
+  if(t)t.style.display='inline';
+  setTimeout(()=>{
+    const box=document.getElementById('feedbackBox');
+    if(box)box.classList.remove('show');
+  },2000);
+  // Track in GA
+  if(typeof gtag!=='undefined')gtag('event','feedback',{value:val});
+}
+window.addEventListener('scroll',function(){
+  if(window.scrollY>300)showFeedback();
+},{once:true});
+
+// Print friendly
+function printPage(){
+  window.print();
+}
+
+// Hot badge for cards
+function addHotBadge(card, key){
+  const hotKeys=['ration','aadhaar','voter','ayushman','caste','kisan','passport'];
+  if(hotKeys.some(k=>key&&key.toLowerCase().includes(k))){
+    const hot=document.createElement('span');
+    hot.textContent='🔥 Hot';
+    hot.style.cssText='background:#fff0e6;color:#c2410c;border-radius:99px;padding:2px 8px;font-size:11px;font-weight:900;display:inline-block;margin-bottom:6px';
+    const h3=card.querySelector('h3');
+    if(h3)h3.parentNode.insertBefore(hot,h3);
+  }
+}
 </script></body></html>
