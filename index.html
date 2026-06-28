@@ -131,8 +131,19 @@ img{loading:lazy}
 .grid{will-change:auto}
 </style>
 <style id="smooth-css">html{scroll-behavior:smooth}</style>
+<style id="lang-css">
+.langSwitcher{display:flex;gap:4px;align-items:center}
+.langBtn{border:0;background:rgba(255,255,255,0.15);color:#fff;border-radius:8px;padding:5px 10px;font-size:12px;font-weight:900;cursor:pointer;transition:.2s}
+.langBtn.active{background:#fff;color:#0b3b8f}
+.langBtn:hover{background:rgba(255,255,255,0.3)}
+</style>
 </head><body><button class="darkBtn" id="darkBtn" onclick="toggleDark()" title="Dark/Light mode">🌙</button>
-<div class="maintbar" id="maintbar">🔄 UPDATE24 ওয়েবসাইট আপডেটের কাজ ৮০% সম্পন্ন হয়েছে। নতুন পরিষেবা ও লিঙ্ক শীঘ্রই যুক্ত হবে। ধৈর্য রাখুন।</div><div class="top"><span>✅ UPDATE24: শুধু West Bengal প্রয়োজনীয় পরিষেবা — Ration • eDistrict • Annapurna Bhandar • Pension • Banglarbhumi • Scholarship • Farmer • Health • Ayushman Bharat • Transport • Job • DBT Bank Link • PAN • e-Shram • GST Registration • Udyam/MSME • PM-KISAN • Passport • DigiLocker</span></div><nav class="nav"><div class="navin"><div class="logo">UPDATE<b>24</b></div><button class="hamb" onclick="document.querySelector('.menu').classList.toggle('open')">☰</button><div class="menu"><a href="#home">Home</a><a href="#services">Services</a><a href="helpline.html">Helpline</a><a href="apps.html">Apps</a><a href="find-office.html">Find Office</a><a href="request.html">Service Form</a><a href="apps.html">Govt Apps</a><a href="https://wa.me/917549459770?text=%E0%A6%A8%E0%A6%AE%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%B0%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20UPDATE24%20%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%AC%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%9F%20%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87%20%E0%A6%8F%E0%A6%B8%E0%A7%87%E0%A6%9B%E0%A6%BF.%0A%0A%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0%20%E0%A6%A8%E0%A6%BE%E0%A6%AE%3A%0A%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE%3A%0A%E0%A6%B8%E0%A6%AE%E0%A6%B8%E0%A7%8D%E0%A6%AF%E0%A6%BE/%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AF%E0%A6%BC%E0%A7%8B%E0%A6%9C%E0%A6%A8%3A%0A%0A%E0%A6%A6%E0%A6%AF%E0%A6%BC%E0%A6%BE%20%E0%A6%95%E0%A6%B0%E0%A7%87%20%E0%A6%86%E0%A6%AE%E0%A6%BE%E0%A6%95%E0%A7%87%20%E0%A6%B8%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%AF%E0%A7%8D%E0%A6%AF%20%E0%A6%95%E0%A6%B0%E0%A7%81%E0%A6%A8%E0%A5%A4" target="_blank">Help</a><a href="javascript:void(0)" onclick="printPage()" style="color:#0b3b8f;font-weight:900">🖨️ Print</a><a href="javascript:void(0)" onclick="hardRefresh()" style="color:#ff6b00;font-weight:900">🔄 Refresh</a></div></div></nav><section class="hero" id="home"><div class="heroin"><div><span class="tag">West Bengal Only Service Portal</span><h1>বাংলার সরকারি পরিষেবা ও direct official links এক জায়গায়</h1><p>যে service online হয়, সেই কাজের সরাসরি official link এখানে দেওয়া আছে। PC-তে PC layout, mobile-এ mobile layout খুলবে।</p><div class="search" style="position:relative"><input id="mainSearch" placeholder="Search: aadhaar, ration, voter, pan, dbt, eshram, gst, udyam" oninput="searchCards();updateQuickSuggest()" autocomplete="off"><button onclick="searchCards()">Search</button><div id="quickSuggest" class="quickSuggest"></div></div><div class="notice">📢 UPDATE24-এ নতুন West Bengal পরিষেবা নিয়মিত যুক্ত করা হচ্ছে। কিছু পরিষেবার update/কাজ চলছে।</div><div class="notice safe" id="safe">✅ আবেদন করার আগে official website-এর নাম মিলিয়ে নিন এবং OTP/ব্যাংক তথ্য কাউকে শেয়ার করবেন না।</div></div><div class="heroCard"><h3>Quick Help</h3><div class="quick"><div>📍 Find DM/SDO/BDO Office</div><div>🍚 Ration status/download/e-KYC</div><div>📄 Caste/Income/Domicile certificate</div><div>🌾 Land khatian/mutation info</div><div>👵 Pension & social schemes</div><div>🏦 DBT Aadhaar-Bank Link</div><div>🩺 Ayushman Bharat Card / ABHA</div><div>👷 e-Shram Card Registration</div><div>🧾 GST Registration</div><div>🏭 Udyam / MSME Registration</div></div></div></div><div class="bannerWrap"><div class="slider"><div class="slides" id="bannerSlides">
+<div class="maintbar" id="maintbar">🔄 UPDATE24 ওয়েবসাইট আপডেটের কাজ ৮০% সম্পন্ন হয়েছে। নতুন পরিষেবা ও লিঙ্ক শীঘ্রই যুক্ত হবে। ধৈর্য রাখুন।</div><div class="top"><span>✅ UPDATE24: শুধু West Bengal প্রয়োজনীয় পরিষেবা — Ration • eDistrict • Annapurna Bhandar • Pension • Banglarbhumi • Scholarship • Farmer • Health • Ayushman Bharat • Transport • Job • DBT Bank Link • PAN • e-Shram • GST Registration • Udyam/MSME • PM-KISAN • Passport • DigiLocker</span></div><nav class="nav"><div class="navin"><div class="logo">UPDATE<b>24</b></div>
+<div class="langSwitcher">
+<button class="langBtn active" id="lang-bn" onclick="setLang('bn')">বাং</button>
+<button class="langBtn" id="lang-hi" onclick="setLang('hi')">हिं</button>
+<button class="langBtn" id="lang-en" onclick="setLang('en')">EN</button>
+</div><button class="hamb" onclick="document.querySelector('.menu').classList.toggle('open')">☰</button><div class="menu"><a href="#home">Home</a><a href="#services">Services</a><a href="helpline.html">Helpline</a><a href="apps.html">Apps</a><a href="find-office.html">Find Office</a><a href="request.html">Service Form</a><a href="apps.html">Govt Apps</a><a href="https://wa.me/917549459770?text=%E0%A6%A8%E0%A6%AE%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A6%BE%E0%A6%B0%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20UPDATE24%20%E0%A6%93%E0%A6%AF%E0%A6%BC%E0%A7%87%E0%A6%AC%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%9F%20%E0%A6%A5%E0%A7%87%E0%A6%95%E0%A7%87%20%E0%A6%8F%E0%A6%B8%E0%A7%87%E0%A6%9B%E0%A6%BF.%0A%0A%E0%A6%B8%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%AD%E0%A6%BF%E0%A6%B8%E0%A7%87%E0%A6%B0%20%E0%A6%A8%E0%A6%BE%E0%A6%AE%3A%0A%E0%A6%9C%E0%A7%87%E0%A6%B2%E0%A6%BE%3A%0A%E0%A6%B8%E0%A6%AE%E0%A6%B8%E0%A7%8D%E0%A6%AF%E0%A6%BE/%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%AF%E0%A6%BC%E0%A7%8B%E0%A6%9C%E0%A6%A8%3A%0A%0A%E0%A6%A6%E0%A6%AF%E0%A6%BC%E0%A6%BE%20%E0%A6%95%E0%A6%B0%E0%A7%87%20%E0%A6%86%E0%A6%AE%E0%A6%BE%E0%A6%95%E0%A7%87%20%E0%A6%B8%E0%A6%BE%E0%A6%B9%E0%A6%BE%E0%A6%AF%E0%A7%8D%E0%A6%AF%20%E0%A6%95%E0%A6%B0%E0%A7%81%E0%A6%A8%E0%A5%A4" target="_blank">Help</a><a href="javascript:void(0)" onclick="printPage()" style="color:#0b3b8f;font-weight:900">🖨️ Print</a><a href="javascript:void(0)" onclick="hardRefresh()" style="color:#ff6b00;font-weight:900">🔄 Refresh</a></div></div></nav><section class="hero" id="home"><div class="heroin"><div><span class="tag">West Bengal Only Service Portal</span><h1>বাংলার সরকারি পরিষেবা ও direct official links এক জায়গায়</h1><p>যে service online হয়, সেই কাজের সরাসরি official link এখানে দেওয়া আছে। PC-তে PC layout, mobile-এ mobile layout খুলবে।</p><div class="search" style="position:relative"><input id="mainSearch" placeholder="Search: aadhaar, ration, voter, pan, dbt, eshram, gst, udyam" oninput="searchCards();updateQuickSuggest()" autocomplete="off"><button onclick="searchCards()">Search</button><div id="quickSuggest" class="quickSuggest"></div></div><div class="notice">📢 UPDATE24-এ নতুন West Bengal পরিষেবা নিয়মিত যুক্ত করা হচ্ছে। কিছু পরিষেবার update/কাজ চলছে।</div><div class="notice safe" id="safe">✅ আবেদন করার আগে official website-এর নাম মিলিয়ে নিন এবং OTP/ব্যাংক তথ্য কাউকে শেয়ার করবেন না।</div></div><div class="heroCard"><h3>Quick Help</h3><div class="quick"><div>📍 Find DM/SDO/BDO Office</div><div>🍚 Ration status/download/e-KYC</div><div>📄 Caste/Income/Domicile certificate</div><div>🌾 Land khatian/mutation info</div><div>👵 Pension & social schemes</div><div>🏦 DBT Aadhaar-Bank Link</div><div>🩺 Ayushman Bharat Card / ABHA</div><div>👷 e-Shram Card Registration</div><div>🧾 GST Registration</div><div>🏭 Udyam / MSME Registration</div></div></div></div><div class="bannerWrap"><div class="slider"><div class="slides" id="bannerSlides">
 <div class="banner imgBanner" style="background:linear-gradient(120deg,#b91c1c 0%,#f97316 100%);position:relative;overflow:hidden;min-height:220px;align-items:center">
   <div style="position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-size:120px;opacity:0.15;line-height:1">🍚</div>
   <div style="position:absolute;right:20px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.12);border-radius:20px;padding:16px;text-align:center;min-width:110px">
@@ -453,4 +464,57 @@ function addHotBadge(card, key){
     if(h3)h3.parentNode.insertBefore(hot,h3);
   }
 }
+
+// Multi-language
+const U24_LANGS = {
+  bn: {
+    title: 'বাংলার সরকারি পরিষেবা ও direct official links এক জায়গায়',
+    subtitle: 'কার্ডে click করলে popup box খুলবে। প্রতিটি কাজের direct link আলাদা দেওয়া আছে।',
+    search: 'Search: aadhaar, ration, voter, pan, dbt, eshram, gst, udyam',
+    notice: '📢 UPDATE24-এ নতুন West Bengal পরিষেবা নিয়মিত যুক্ত করা হচ্ছে।',
+    safe: '✅ আবেদন করার আগে official website-এর নাম মিলিয়ে নিন।',
+    services: 'West Bengal Services',
+    important: 'Important Services'
+  },
+  hi: {
+    title: 'पश्चिम बंगाल की सरकारी सेवाएं एक जगह',
+    subtitle: 'कार्ड पर click करें — हर काम का direct link अलग दिया गया है।',
+    search: 'खोजें: aadhaar, ration, voter, pan, dbt, eshram',
+    notice: '📢 UPDATE24 में नई West Bengal सेवाएं नियमित रूप से जोड़ी जा रही हैं।',
+    safe: '✅ आवेदन से पहले official website का नाम जांचें।',
+    services: 'West Bengal Services',
+    important: 'Important Services'
+  },
+  en: {
+    title: 'West Bengal Government Services & Official Links in One Place',
+    subtitle: 'Click on a card to open the service popup with direct official links.',
+    search: 'Search: aadhaar, ration, voter, pan, dbt, eshram, gst, udyam',
+    notice: '📢 New West Bengal services are regularly added to UPDATE24.',
+    safe: '✅ Verify the official website name before applying.',
+    services: 'West Bengal Services',
+    important: 'Important Services'
+  }
+};
+
+function setLang(lang){
+  localStorage.setItem('u24lang', lang);
+  const t=U24_LANGS[lang]||U24_LANGS.bn;
+  const h1=document.querySelector('h1');
+  if(h1)h1.textContent=t.title;
+  const sub=document.querySelector('.sub');
+  if(sub)sub.textContent=t.subtitle;
+  const search=document.getElementById('mainSearch');
+  if(search)search.placeholder=t.search;
+  const notice=document.querySelector('.notice');
+  if(notice)notice.textContent=t.notice;
+  const safe=document.getElementById('safe');
+  if(safe)safe.textContent=t.safe;
+  // Update active button
+  ['bn','hi','en'].forEach(l=>{
+    const b=document.getElementById('lang-'+l);
+    if(b)b.classList.toggle('active',l===lang);
+  });
+}
+const savedLang=localStorage.getItem('u24lang')||'bn';
+document.addEventListener('DOMContentLoaded',()=>setLang(savedLang));
 </script></body></html>
