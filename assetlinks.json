@@ -1,12 +1,8 @@
-[
-  {
-    "relation": ["delegate_permission/common.handle_all_urls"],
-    "target": {
-      "namespace": "android_app",
-      "package_name": "com.update24x7.india",
-      "sha256_cert_fingerprints": [
-        "REPLACE_WITH_SHA256_FINGERPRINT_FROM_PWABUILDER"
-      ]
-    }
-  }
-]
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "app.vercel.update24x7_india.twa",
+        "sha256_cert_fingerprints": ["07:C6:2D:FE:D3:83:A8:58:C3:23:9C:AE:F1:2F:EF:39:49:12:13:AA:7F:77:EC:43:49:FF:46:83:46:CF:8E:07"]
+      }
+    }]
