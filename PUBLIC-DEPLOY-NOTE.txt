@@ -1,0 +1,8 @@
+UPDATE24 PUBLIC WEBSITE PACKAGE
+
+1) এই folder/ZIP-টিই GitHub বা Vercel-এ upload করবেন।
+2) Mobile bottom menu থেকে Apps option সরানো হয়েছে; সেখানে Form থাকবে।
+3) Public menu/sidebar থেকেও Govt Apps option সরানো হয়েছে।
+4) Admin Panel, Admin URL/PIN এবং backend setup files এই public package-এ নেই।
+5) পুরোনো cache সরানোর জন্য service worker version update করা হয়েছে।
+6) ভুলভাবে ads.txt-এ থাকা Admin code-ও public package থেকে সরানো হয়েছে।
