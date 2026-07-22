@@ -1,4 +1,4 @@
-const CACHE_NAME='update24-wb-v6';
+const CACHE_NAME='update24-wb-v9-share-in-menu';
 const STATIC_CACHE=[
   './',
   'index.html',

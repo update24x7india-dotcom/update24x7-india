@@ -1,0 +1,15 @@
+UPDATE24 Share App Update
+
+Current placement:
+- Share App is available only inside the 3-line (hamburger) menu
+- It appears directly below Service Form
+
+Removed from:
+- Mobile bottom navigation
+- Important Links section
+
+Share behavior retained:
+- Native phone share menu support
+- WhatsApp fallback
+- Shares UPDATE24 name, service summary, website link, disclaimer and designer credit
+- Service worker cache updated

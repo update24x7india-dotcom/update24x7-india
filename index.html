@@ -250,8 +250,10 @@ body.dark .discBox{background:#1e293b;color:#e2e8f0}
   .userChip .ut{display:none}
 }
 .bottomBar{display:none;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;box-shadow:0 -4px 18px #0002;border-top:1px solid #e5edf6}
-.bottomBar a{text-align:center;color:#1d4ed8;font-weight:900;padding:8px 2px;font-size:11px;line-height:1.15}
+.bottomBar a,.bottomBar button{text-align:center;color:#1d4ed8;font-weight:900;padding:8px 2px;font-size:11px;line-height:1.15;background:transparent;border:0;font-family:inherit;cursor:pointer}
 .bottomBar span{display:block;font-size:18px;margin-bottom:2px}
+.bottomBar .shareNav{color:#fff;background:linear-gradient(135deg,#2563eb,#1d4ed8);margin:5px 3px;border-radius:14px;padding:5px 2px;box-shadow:0 5px 14px #1d4ed84d}
+.bottomBar .shareNav span{font-size:20px;margin-bottom:0}
 .bottomBar a.help{color:#16a34a}
 body.dark .bottomBar{background:#1e293b;border-color:#27344a}
 .sideOverlay{display:none;position:fixed;inset:0;background:#0006;z-index:35}
@@ -294,6 +296,7 @@ body.dark .bottomBar{background:#1e293b;border-color:#27344a}
       <a href="find-office.html"><span class="si">📍</span>Find Office</a>
       <a href="helpline.html"><span class="si">☎️</span>Helpline</a>
       <a href="request.html"><span class="si">📝</span>Service Form</a>
+      <a href="javascript:void(0)" onclick="shareApp();closeSidebar()"><span class="si">📤</span>Share App</a>
       <div class="secLabel">Account</div>
       <a href="about.html"><span class="si">ℹ️</span>About</a>
       <a href="contact.html"><span class="si">✉️</span>Contact</a>
@@ -414,16 +417,6 @@ body.dark .bottomBar{background:#1e293b;border-color:#27344a}
           </div>
 
           <div class="panel">
-            <div class="panelHead"><h2>Latest Updates</h2><a href="javascript:void(0)">View All →</a></div>
-            <div id="latestUpdatesList">
-              <div class="updateItem"><div class="uico">🆕</div><div class="ut"><b>New: Annapurna Bhandar status link</b><span>আজ</span></div></div>
-              <div class="updateItem"><div class="uico">🔄</div><div class="ut"><b>System maintenance notice</b><span>গতকাল</span></div></div>
-              <div class="updateItem"><div class="uico">📄</div><div class="ut"><b>Updated: e-District certificate links</b><span>২ দিন আগে</span></div></div>
-              <div class="updateItem"><div class="uico">📱</div><div class="ut"><b>New training video available</b><span>৩ দিন আগে</span></div></div>
-            </div>
-          </div>
-
-          <div class="panel">
             <div class="panelHead"><h2>Important Links</h2></div>
             <div class="linkGrid">
               <a class="linkChip" href="about.html"><span class="li">ℹ️</span>About</a>
@@ -463,7 +456,7 @@ body.dark .bottomBar{background:#1e293b;border-color:#27344a}
 <div class="bottomBar">
   <a href="#home"><span>🏠</span>Home</a>
   <a href="#services"><span>📂</span>Services</a>
-  <a href="find-office.html"><span>📍</span>Office</a>
+  <a href="apps.html"><span>📱</span>Apps</a>
   <a href="helpline.html"><span>☎️</span>Helpline</a>
   <a class="help" href="https://wa.me/917549459770" target="_blank"><span>💬</span>Help</a>
 </div>
@@ -634,6 +627,41 @@ function updateBookmarkBtn(){
   const btn=document.getElementById('bookmarkBtn');
   if(!btn)return;
   btn.textContent=bookmarks.includes(currentModalIdx)?'✅ Bookmarked':'🔖 Bookmark';
+}
+
+
+function getAppShareUrl(){
+  const canonical=document.querySelector('link[rel="canonical"]');
+  return canonical&&canonical.href?canonical.href:'https://update24x7-india.vercel.app/';
+}
+function shareApp(){
+  const appUrl=getAppShareUrl();
+  const title='UPDATE24 - West Bengal Government Services Portal';
+  const details=[
+    'UPDATE24 - West Bengal Government Services Portal',
+    '',
+    'Aadhaar, Ration, Voter ID, DBT, e-Shram, GST, Udyamসহ বিভিন্ন সরকারি পরিষেবার official link ও প্রয়োজনীয় তথ্য এক জায়গায় সম্পূর্ণ বিনামূল্যে।',
+    '',
+    'ওয়েবসাইট খুলুন: '+appUrl,
+    '',
+    '⚠️ UPDATE24 কোনো সরকারি ওয়েবসাইট নয়। এটি একটি স্বাধীন তথ্যভিত্তিক পোর্টাল।',
+    'Designed by Digital Agency by Chandan Das'
+  ].join('\n');
+
+  if(navigator.share){
+    navigator.share({title:title,text:details,url:appUrl}).catch(err=>{
+      if(err&&err.name!=='AbortError')shareAppFallback(details);
+    });
+  }else{
+    shareAppFallback(details);
+  }
+}
+function shareAppFallback(details){
+  const wa='https://wa.me/?text='+encodeURIComponent(details);
+  const opened=window.open(wa,'_blank','noopener');
+  if(!opened&&navigator.clipboard){
+    navigator.clipboard.writeText(details).then(()=>alert('UPDATE24 details ও link copy হয়েছে।'));
+  }
 }
 
 function shareService(){
