@@ -99,7 +99,7 @@ button{font-family:inherit}
 .userChip .ut span{display:block;font-size:10px;color:#64748b}
 .userChip .ut b{display:block;font-size:12px;color:#172033}
 .content{padding:22px;max-width:1500px;width:100%;margin:0 auto}
-.statsRow{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:20px}
+.statsRow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
 .statCard{background:#fff;border:1px solid #eaeff9;border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 4px 14px #0000000a}
 .statCard .si{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:19px;flex:0 0 auto}
 .statCard .st small{display:block;font-size:11px;color:#64748b;font-weight:700}
@@ -127,10 +127,10 @@ button{font-family:inherit}
 .panelHead{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .panelHead h2{font-size:16px;font-weight:900}
 .panelHead a{font-size:12px;font-weight:800;color:#1d4ed8}
-.skelGrid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.skelGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .skel{background:#e2e8f0;border-radius:16px;padding:16px;height:108px;animation:skelAnim 1.5s infinite}
 @keyframes skelAnim{0%,100%{opacity:1}50%{opacity:.5}}
-.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .card{background:#f8fafc;border:1px solid #eef2f9;border-radius:16px;padding:16px 12px;cursor:pointer;transition:.15s;text-align:center}
 .card:hover{transform:translateY(-3px);box-shadow:0 10px 24px #1d4ed81a;border-color:#c7d7fb;background:#fff}
 .card .ico{width:46px;height:46px;border-radius:13px;background:#e0e9ff;display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 10px}
@@ -249,7 +249,7 @@ body.dark .discBox{background:#1e293b;color:#e2e8f0}
   .noticeBanner{flex-direction:column;align-items:flex-start}
   .userChip .ut{display:none}
 }
-.bottomBar{display:none;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;box-shadow:0 -4px 18px #0002;border-top:1px solid #e5edf6}
+.bottomBar{display:none;grid-template-columns:repeat(4,1fr);position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;box-shadow:0 -4px 18px #0002;border-top:1px solid #e5edf6}
 .bottomBar a,.bottomBar button{text-align:center;color:#1d4ed8;font-weight:900;padding:8px 2px;font-size:11px;line-height:1.15;background:transparent;border:0;font-family:inherit;cursor:pointer}
 .bottomBar span{display:block;font-size:18px;margin-bottom:2px}
 .bottomBar .shareNav{color:#fff;background:linear-gradient(135deg,#2563eb,#1d4ed8);margin:5px 3px;border-radius:14px;padding:5px 2px;box-shadow:0 5px 14px #1d4ed84d}
@@ -295,7 +295,7 @@ body.dark .bottomBar{background:#1e293b;border-color:#27344a}
       
       <a href="find-office.html"><span class="si">📍</span>Find Office</a>
       <a href="helpline.html"><span class="si">☎️</span>Helpline</a>
-      <a href="request.html"><span class="si">📝</span>Service Form</a>
+      
       <a href="javascript:void(0)" onclick="shareApp();closeSidebar()"><span class="si">📤</span>Share App</a>
       <div class="secLabel">Account</div>
       <a href="about.html"><span class="si">ℹ️</span>About</a>
@@ -305,7 +305,7 @@ body.dark .bottomBar{background:#1e293b;border-color:#27344a}
       <a href="javascript:void(0)" onclick="hardRefresh()"><span class="si">🔄</span>Refresh App</a>
       <a href="https://wa.me/917549459770" target="_blank"><span class="si">💬</span>WhatsApp Help</a>
     </nav>
-    <div class="sideFooter">© 2026 UPDATE24<br>Designed by Digital Agency by Chandan Das</div>
+    <div class="sideFooter">© 2026 UPDATE24<br>Designed by <a href="https://www.digitalagencybychandandas.in/" target="_blank" rel="noopener" style="color:inherit;font-weight:800">Digital Agency by Chandan Das</a></div>
   </aside>
 
   <div class="main">
@@ -456,7 +456,7 @@ body.dark .bottomBar{background:#1e293b;border-color:#27344a}
 <div class="bottomBar">
   <a href="#home"><span>🏠</span>Home</a>
   <a href="#services"><span>📂</span>Services</a>
-  <a href="request.html"><span>📝</span>Form</a>
+  
   <a href="helpline.html"><span>☎️</span>Helpline</a>
   <a class="help" href="https://wa.me/917549459770" target="_blank"><span>💬</span>Help</a>
 </div>
@@ -645,11 +645,13 @@ function shareApp(){
     'ওয়েবসাইট খুলুন: '+appUrl,
     '',
     '⚠️ UPDATE24 কোনো সরকারি ওয়েবসাইট নয়। এটি একটি স্বাধীন তথ্যভিত্তিক পোর্টাল।',
-    'Designed by Digital Agency by Chandan Das'
+    '',
+    'Designed by Digital Agency by Chandan Das',
+    'https://www.digitalagencybychandandas.in/'
   ].join('\n');
 
   if(navigator.share){
-    navigator.share({title:title,text:details,url:appUrl}).catch(err=>{
+    navigator.share({title:title,text:details}).catch(err=>{
       if(err&&err.name!=='AbortError')shareAppFallback(details);
     });
   }else{

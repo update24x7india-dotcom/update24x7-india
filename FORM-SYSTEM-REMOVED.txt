@@ -1,0 +1,9 @@
+UPDATE24 Form System Removed
+
+- Service Form option removed from mobile bottom navigation.
+- Service Form option removed from sidebar and desktop navigation.
+- Contact page Service Form card removed.
+- request.html removed from the public package.
+- Service worker cache and sitemap updated.
+
+Deploy this ZIP and press Ctrl + Shift + R once.

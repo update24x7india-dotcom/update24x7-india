@@ -1,4 +1,4 @@
-const CACHE_NAME='update24-wb-v10-no-app-public-no-admin';
+const CACHE_NAME='update24-wb-v12-no-form';
 const STATIC_CACHE=[
   './',
   'index.html',
@@ -8,7 +8,6 @@ const STATIC_CACHE=[
   'icon-512.png',
   'helpline.html',
   'apps.html',
-  'request.html',
   'find-office.html',
   'about.html',
   'privacy.html',

@@ -2,7 +2,6 @@ UPDATE24 Share App Update
 
 Current placement:
 - Share App is available only inside the 3-line (hamburger) menu
-- It appears directly below Service Form
 
 Removed from:
 - Mobile bottom navigation
@@ -13,3 +12,6 @@ Share behavior retained:
 - WhatsApp fallback
 - Shares UPDATE24 name, service summary, website link, disclaimer and designer credit
 - Service worker cache updated
+
+- Designer link in shared message: https://www.digitalagencybychandandas.in/
+- Removed duplicate UPDATE24 URL appended by native share.
