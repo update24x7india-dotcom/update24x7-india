@@ -1,0 +1,16 @@
+UPDATE24 Mobile Interface Upgrade
+Date: 22 July 2026
+
+Changes included:
+- App-style sticky mobile header and search box
+- Compact horizontal statistics cards
+- Modern gradient welcome section
+- Three-column touch-friendly service grid
+- Improved notices, cards, buttons and spacing
+- Bottom-sheet service popup on mobile
+- Modern fixed bottom navigation
+- Better mobile layouts for service pages, forms, helpline and public information pages
+- Added mobile-ui.css to public pages
+- Updated service-worker cache version and cached the new stylesheet
+
+Existing live links, Google Sheet data, admin panel and desktop layout were kept unchanged.

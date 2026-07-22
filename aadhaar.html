@@ -1,21 +1,96 @@
-<!DOCTYPE html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Page Not Found - UPDATE24</title><style>body{font-family:Arial,sans-serif;text-align:center;padding:60px;background:#f5f7fb;color:#0f172a}.box{max-width:600px;margin:auto;background:#fff;padding:35px;border-radius:18px;box-shadow:0 10px 30px #0001}a{display:inline-block;margin-top:20px;background:#0d47a1;color:#fff;padding:12px 20px;border-radius:10px;text-decoration:none}.maintbar{background:linear-gradient(90deg,#b91c1c,#dc2626);color:#fff;text-align:center;padding:10px 14px;font-weight:800;font-size:14px;letter-spacing:.2px}</style></head><body><div class="maintbar" id="maintbar">🛠️ ওয়েবসাইটের কিছু পরিষেবায় বর্তমানে রক্ষণাবেক্ষণের (Maintenance) কাজ চলছে। কাজ শেষ হতে কিছুটা সময় লাগতে পারে, ধৈর্য রাখুন। অসুবিধার জন্য আমরা ক্ষমাপ্রার্থী।</div><div class="box"><h1>404</h1><h2>Page Not Found</h2><p>আপনি যে পেজটি খুঁজছেন সেটি পাওয়া যায়নি।</p><a href="/">Back to Home</a></div><script>
-(function(){
-  var bar=document.getElementById('maintbar');
-  if(!bar)return;
-  var cb='u24_maint_cb_'+Date.now()+'_'+Math.random().toString(36).slice(2);
-  window[cb]=function(data){
-    try{
-      var m=data&&data.maintenance;
-      if(!m||m.enabled===false){bar.style.display='none';}
-      else{if(typeof m.text==='string'&&m.text.trim()){bar.textContent=m.text;}bar.style.display='';setTimeout(function(){bar.style.display='none';},120000);}
-    }catch(e){}
-    cleanup();
-  };
-  var s=document.createElement('script');
-  function cleanup(){try{delete window[cb];}catch(e){window[cb]=undefined;}if(s.parentNode)s.parentNode.removeChild(s);}
-  s.onerror=cleanup;
-  s.src='https://script.google.com/macros/s/AKfycbxNE5u4Elcfd0S53tXoF7T20fPR14wcm3A5c7Ggd4lonKE7XB4H4z-kzzPwYyUYg7c3-g/exec?callback='+encodeURIComponent(cb)+'&v='+Date.now();
-  document.head.appendChild(s);
-})();
-</script>
-</body></html>
+// /api/update-links.js
+// Vercel Serverless Function
+// Receives updated links.json content from the admin panel, verifies the admin secret,
+// then commits the new file directly to the GitHub repo using the GitHub REST API.
+// Required Environment Variables (set these in Vercel Project Settings -> Environment Variables):
+//   ADMIN_SECRET     - a secret password you choose, used to authorize saves from the admin panel
+//   GITHUB_TOKEN     - a GitHub Personal Access Token with "repo" scope
+//   GITHUB_OWNER     - your GitHub username (the account that owns the repo)
+//   GITHUB_REPO      - the repository name, e.g. "update24x7-india"
+//   GITHUB_BRANCH    - (optional) branch to commit to, defaults to "main"
+
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    res.status(405).json({ success: false, error: 'Method not allowed' });
+    return;
+  }
+
+  try {
+    const { secret, data } = req.body || {};
+
+    if (!secret || secret !== process.env.ADMIN_SECRET) {
+      res.status(401).json({ success: false, error: 'Unauthorized: ভুল admin secret key।' });
+      return;
+    }
+
+    if (!data || typeof data !== 'object') {
+      res.status(400).json({ success: false, error: 'Invalid data payload.' });
+      return;
+    }
+
+    const owner = process.env.GITHUB_OWNER;
+    const repo = process.env.GITHUB_REPO;
+    const branch = process.env.GITHUB_BRANCH || 'main';
+    const token = process.env.GITHUB_TOKEN;
+    const filePath = 'links.json';
+
+    if (!owner || !repo || !token) {
+      res.status(500).json({ success: false, error: 'Server misconfigured: GITHUB_OWNER / GITHUB_REPO / GITHUB_TOKEN missing.' });
+      return;
+    }
+
+    const apiBase = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
+
+    // Step 1: get the current file's SHA (required by GitHub API to update an existing file)
+    const getRes = await fetch(`${apiBase}?ref=${branch}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/vnd.github+json',
+        'User-Agent': 'update24-admin-panel'
+      }
+    });
+
+    if (!getRes.ok && getRes.status !== 404) {
+      const errText = await getRes.text();
+      res.status(502).json({ success: false, error: `GitHub GET failed: ${getRes.status} ${errText}` });
+      return;
+    }
+
+    let sha = undefined;
+    if (getRes.ok) {
+      const getJson = await getRes.json();
+      sha = getJson.sha;
+    }
+
+    // Step 2: encode the new content as base64 (UTF-8 safe)
+    const newContent = JSON.stringify(data, null, 2);
+    const base64Content = Buffer.from(newContent, 'utf-8').toString('base64');
+
+    // Step 3: commit the updated file
+    const putRes = await fetch(apiBase, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/vnd.github+json',
+        'User-Agent': 'update24-admin-panel',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: 'Update links.json via Admin Panel',
+        content: base64Content,
+        branch,
+        ...(sha ? { sha } : {})
+      })
+    });
+
+    if (!putRes.ok) {
+      const errText = await putRes.text();
+      res.status(502).json({ success: false, error: `GitHub PUT failed: ${putRes.status} ${errText}` });
+      return;
+    }
+
+    res.status(200).json({ success: true });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message || 'Unknown server error' });
+  }
+}
