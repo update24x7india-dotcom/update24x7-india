@@ -1,8 +1,9 @@
-const CACHE_NAME='update24-wb-v4';
+const CACHE_NAME='update24-wb-v5';
 const STATIC_CACHE=[
   './',
   'index.html',
   'manifest.json',
+  'links.json',
   'icon-512.png',
   'helpline.html',
   'apps.html',

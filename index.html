@@ -18,13 +18,27 @@
 <meta name="theme-color" content="#1d4ed8">
 <script>
 const U24_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwFD6IHcLeg8YDoF6XJoPuhO2jAV4XalJqYevuJm7QiXF7Uur35Rzaq3HDkUUEI_EmqCw/exec";
-function U24LiveData(){
+function U24LiveData(timeoutMs){
+  timeoutMs = timeoutMs || 7000;
   return new Promise((resolve,reject)=>{
     const cb='u24_cb_'+Date.now()+'_'+Math.random().toString(36).slice(2);
-    window[cb]=function(data){ cleanup(); resolve(data); };
+    let done=false;
+    const timer=setTimeout(function(){
+      if(done)return; done=true;
+      cleanup();
+      reject(new Error('Google Sheet live data timed out'));
+    }, timeoutMs);
+    window[cb]=function(data){
+      if(done)return; done=true;
+      clearTimeout(timer); cleanup(); resolve(data);
+    };
     const s=document.createElement('script');
     function cleanup(){ try{delete window[cb];}catch(e){window[cb]=undefined} if(s.parentNode)s.parentNode.removeChild(s); }
-    s.onerror=function(){ cleanup(); reject(new Error('Google Sheet live data load failed')); };
+    s.onerror=function(){
+      if(done)return; done=true;
+      clearTimeout(timer); cleanup();
+      reject(new Error('Google Sheet live data load failed'));
+    };
     s.src=U24_APPS_SCRIPT_URL+'?callback='+encodeURIComponent(cb)+'&v='+Date.now();
     document.head.appendChild(s);
   });
@@ -519,8 +533,27 @@ async function loadLinksData(){
     renderCards();
     applyMaintenance(data.maintenance);
     hideSkeleton();
+    try{localStorage.setItem('u24_services_cache',JSON.stringify(data));}catch(e){}
   }catch(err){
-    console.error('Could not load live Google Sheet data',err);
+    console.error('Could not load live Google Sheet data, using fallback data',err);
+    let fallback=null;
+    // 1) Try last-known-good data saved from a previous successful visit
+    try{
+      const cached=localStorage.getItem('u24_services_cache');
+      if(cached)fallback=JSON.parse(cached);
+    }catch(e){}
+    // 2) Otherwise use the links.json bundled with the site itself
+    if(!fallback||!(fallback.homepage_services||[]).length){
+      try{
+        const res=await fetch('links.json',{cache:'no-store'});
+        if(res.ok)fallback=await res.json();
+      }catch(e){console.error('Could not load bundled links.json fallback',e);}
+    }
+    services.length=0;
+    if(fallback&&(fallback.homepage_services||[]).length){
+      fallback.homepage_services.forEach(s=>services.push(s));
+      applyMaintenance(fallback.maintenance);
+    }
     rebuildAllLinks();
     renderCards();
     hideSkeleton();
